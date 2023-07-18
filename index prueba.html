@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="utf-8">
+  <title>JavaScript current day and time</title>
+  <script src="jsprueba.js"></script>
+  <script>
+    var today = new Date();
+  var day = today.getDay();
+  var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
+  console.log("Today is : " + daylist[day] + ".");
+  var hour = today.getHours();
+  var minute = today.getMinutes();
+  var second = today.getSeconds();
+  var prepand = (hour >= 12)? " PM ":" AM ";
+  hour = (hour >= 12)? hour - 12: hour;
+  if (hour===0 && prepand===' PM ') 
+  { 
+  if (minute===0 && second===0)
+  { 
+  hour=12;
+  prepand=' Noon';
+  } 
+  else
+  { 
+  hour=12;
+  prepand=' PM';
+  } 
+  } 
+  if (hour===0 && prepand===' AM ') 
+  { 
+  if (minute===0 && second===0)
+  { 
+  hour=12;
+  prepand=' Midnight';
+  } 
+  else
+  { 
+  hour=12;
+  prepand=' AM';
+  } 
+  } 
+console.log("Current Time : "+hour + prepand + " : " + minute + " : " + second);
+
+  </script>
+  </head>
+  <body>
+    <h1>Current Time</h1>
+  <p id="current-time"></p>
+
+  <script>
+    // Aquí puedes agregar código JavaScript adicional para manipular y mostrar los elementos HTML
+
+    // Obtener el elemento del párrafo con id "current-time"
+    var currentTimeElement = document.getElementById("current-time");
+
+    // Crear el mensaje de la hora actual
+    var currentTimeMessage = `Current Time: ${hour}${prepand} : ${minute} : ${second}`;
+
+    // Asignar el mensaje al contenido del elemento del párrafo
+    currentTimeElement.textContent = currentTimeMessage;
+  </script>
+  </body>
+</html>
